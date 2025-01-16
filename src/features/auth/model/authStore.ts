@@ -74,7 +74,11 @@ class AuthStore {
       })
     }
   }
-
+  /*
+   *todo: в задаче IN-244 (но это не точно, что именно в этой задача)
+   * у Татьяны должно быть убрано условие this.isAuthenticated === 'no',
+   * так как с этим условием криво работает авторизация через GitHub
+   */
   async me() {
     if (this.isAuthenticated === 'yes' || this.isAuthenticated === 'no') {
       return
