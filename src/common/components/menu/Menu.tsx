@@ -14,7 +14,7 @@ import {
   PlusSquareOutline,
   SearchOutline,
 } from '@/assets/icons/outlineIcons'
-import { Paths, cn, useModal, useTranslation } from '@/common'
+import { PathService, Paths, cn, useModal, useTranslation } from '@/common'
 import { matchesPathname } from '@/common/components/menu/matchesPathname'
 import { Tooltip } from '@/common/components/tooltip'
 import { generalStore } from '@/core/store'
@@ -39,6 +39,7 @@ export const Menu = ({ className }: ComponentPropsWithoutRef<'nav'>) => {
     <nav
       className={cn(
         'min-w-[360px] w-full bg-dark-700 border-t border-dark-300 fixed bottom-0 left-0 right-0 z-[50]',
+        'lg:hidden',
         className
       )}
     >
@@ -99,7 +100,9 @@ export const Menu = ({ className }: ComponentPropsWithoutRef<'nav'>) => {
         </li>
         <li>
           <Tooltip title={t.menu.profile}>
-            <Link href={Paths.profileLink(userId)}>
+            <Link
+              href={PathService.generatePath(Paths.userProfile, { userId })}
+            >
               {matchesPathname(href, Paths.profile) ? (
                 <Person className={'size-6 text-accent-500'} />
               ) : (

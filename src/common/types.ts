@@ -40,6 +40,7 @@ export type FullName = {
 
 export type BasicPost = {
   avatarOwner: string
+  avatarWhoLikes?: boolean
   createdAt: string
   description: string
   id: number
@@ -59,3 +60,16 @@ export type PagesInfo = {
   pagesCount: number
   totalCount: number
 }
+
+export type Image = {
+  createdAt: string
+  fileSize: number
+  height: number
+  uploadId: string
+  url: string
+  width: number
+}
+
+export type StaticImage = { url: StaticImageData | string } & Omit<Image, 'url'>
+
+export type SortDirection = 'asc' | 'desc'
